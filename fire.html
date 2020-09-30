@@ -1,59 +1,11 @@
 <html>
-    <head>
-        <meta charset="UTF-8"> <!-- covers latest characterset i.e more than 10000 charset-->
-        <title>CJ society Firework</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- covers latest characterset i.e more than 10000 charset-->
+    <title>CJ society Firework</title>
+  </head>
 </html>
 <body>
-    <canvas></canvas> <!-- used to draw graphics on webpage i.e a kind of container or must use Js-->
-
-<!-- will use script tag rather than separate file-->
-
-    <script>
-
-        var t = 0; 
-        var c = document.querySelector("canvas"); /* returns first element that matches a specified CSS selector(s) in the document */
-        
-        var $ = c.getContext('2d'); /*obtain the rendering context and its drawing functions */
-        c.width = window.innerWidth;
-        c.height = window.innerHeight;
-        $.fillStyle = 'hsla(0,0%,0%,1)';
-
-/* event listener syntax= element.addEventListener(event, function, useCapture); */
-        /* attaches an event handler to the specified element */
-
-        window.addEventListener('resize',
-        function() {
-            c.width = window.innerWidth; /*Get the current frame's height and width */
-            c.height = window.innerHeight;
-        }, false);
-
-        function draw() {
-            $.globalCompositeOperation = 'source -over'; /*sets or returns how a source (new) image are drawn onto a destination (existing) image */
-            $.fillStyle = 'hsla( 0, 0%, 0%, .1)';
-            $.fillRect( 0, 0, c.width, c.height);
-            var foo, i, j, r;
-            foo = Math.sin(t) * 2 * Math.PI;
-            for (i=0; i<400; ++i){
-
-                r = 400 * Math.sin(i * foo);
-                $.globalCompositeOperation = ' ';
-                $.fillStyle = 'hsla(' +i +12 +',100%, 60%, 1)';
-                $.beginPath();
-                $.arc(Math.sin(i) * r + (c.width/2), Math.cos(i) * r + (c.height/2), 1.5, 0, Math.PI * 2);
-                $.fill();
-
-            }
-            t+= 0.000005;
-            return t %= 2*Math.PI;
-
-        };
-
-        function run() {
-            window.requestAnimationFrame(run); /* reccursion */
-            draw();
-        }
-        run();
-
-    </script>
+  <canvas></canvas>
+  <script src="assets/main.js"></script>
 </body>
